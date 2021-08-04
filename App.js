@@ -22,8 +22,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <h1>Test</h1>
       {shopminders.map((obj) => (
-        
+
         <View id={obj.id}>
           <Text>{obj.name}</Text>
           <img style={{  width: '20%' }} src={`data:image/jpeg;base64,${obj.pic}`} />
