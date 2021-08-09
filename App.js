@@ -1,40 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { db } from './firebase';
+import { auth } from './firebase';
 
 export default function App() {
-  const [shopminders, setShopminders] = useState([]);
+  const [signedIn, setSignedIn] = useState(false);
   
-  useEffect(() => {
-    const ref = db.collection('shopminders');
-    ref.onSnapshot((query) => {
-        const objs = [];
-        query.forEach((doc) => {
-          objs.push({
-            id: doc.id,
-            ...doc.data(),
-          });
-        });
-        setShopminders(objs);
-      });
-  }, [])
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+    setSignedIn(true);
+    } else {
+    setSignedIn(false);
+    }
+    });
 
-  return (
-    <View style={styles.container}>
-      <h1>Test</h1>
-      {shopminders.map((obj) => (
-
-        <View id={obj.id}>
-          <Text>{obj.name}</Text>
-          <img style={{  width: '20%' }} src={`data:image/jpeg;base64,${obj.pic}`} />
-
+    return (
+      <View style={styles.container}>
+        {signedIn
+          ? (
+            <Text>Signed in</Text>
+          ) : (
+            <Text>Not signed in</Text>
+          )
+        } 
         </View>
-  ))}
-      <StatusBar style="auto" />
-    </View>
-  );
+      );
+      
 }
+
 
 const styles = StyleSheet.create({
   container: {
