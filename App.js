@@ -5,6 +5,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { auth } from './firebase';
 import LoginScreen from './screens/sessions/LoginScreen';
+import RegisterScreen from './screens/sessions/RegisterScreen';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,18 @@ export default function App() {
                 component={LoginScreen}
                 options={{
                   title: 'Sign in',
+                  headerStyle: {
+                    backgroundColor: '#29434e',
+                    borderBottomColor: '#29434e',
+                  },
+                  headerTintColor: '#fff',
+                }}
+              />
+              <Stack.Screen
+                name="register"
+                component={RegisterScreen}
+                options={{
+                  title: 'Register',
                   headerStyle: {
                     backgroundColor: '#29434e',
                     borderBottomColor: '#29434e',
