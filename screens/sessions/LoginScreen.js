@@ -75,7 +75,7 @@ const LoginScreen = ({ navigation }) => {
         compact
         onPress={() => navigation.navigate('register')}>Register Account
       </Button>
-      
+      <p>Made by Krittipong</p>
     </View>
     
     
