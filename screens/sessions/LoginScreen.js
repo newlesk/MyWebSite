@@ -80,11 +80,11 @@ const LoginScreen = ({ navigation }) => {
     
     
   )
-  const LoginScreen = ({ navigation }) => {
+  // const LoginScreen = ({ navigation }) => {
     
 
 
-  }
+  // }
   
 };
 export default LoginScreen;

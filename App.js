@@ -19,6 +19,13 @@ export default function App() {
     }
   });
   
+  const forFade = ({ current }) => ({
+    cardStyle: {
+      opacity: current.progress,
+      backgroundColor: 'transparent',
+    },
+  });
+  
   return (
     <NavigationContainer theme={DefaultTheme}>
       {signedIn
@@ -36,6 +43,7 @@ export default function App() {
                 name="signIn"
                 component={LoginScreen}
                 options={{
+                  cardStyleInterpolator: forFade,
                   title: 'Sign in',
                   headerStyle: {
                     backgroundColor: '#29434e',
@@ -48,6 +56,7 @@ export default function App() {
                 name="register"
                 component={RegisterScreen}
                 options={{
+                  cardStyleInterpolator: forFade,
                   title: 'Register',
                   headerStyle: {
                     backgroundColor: '#29434e',
