@@ -32,3 +32,34 @@ const styles = StyleSheet.create({
 });
 
 export default styles;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Are You Copy Me By TNEW
