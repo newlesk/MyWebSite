@@ -1,20 +1,26 @@
+/* eslint-disable react/jsx-filename-extension */
 import React, { useRef } from 'react';
 import { View, Text } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
+
 import { TextInput, Button } from 'react-native-paper';
+
 import styles from './styles';
+import { auth } from '../../firebase';
 
 const RegisterScreen = ({ navigation }) => {
-  const { 
-    control, 
-    handleSubmit, 
-    formState: { errors }, 
-    watch, 
-    register} =  useForm();
+  const { control, handleSubmit, formState :errors, watch, register} = useForm();
+
   const password = useRef({});
   password.current = watch('password', '');
-  const onSubmit = (formData) => {
-    console.log(formData);
+
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    console.log(email, password);
+    auth
+      .createUserWithEmailAndPassword(
+        email.trim().toLowerCase(), password
+      );
   };
 
   return (
@@ -38,6 +44,7 @@ const RegisterScreen = ({ navigation }) => {
       <View style={styles.errorMsg}>
         {errors.email && <Text>You must enter your email</Text>}
       </View>
+
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -56,7 +63,7 @@ const RegisterScreen = ({ navigation }) => {
         defaultValue=""
       />
       <View style={styles.errorMsg}>
-        {errors.password && <Text>You must enter your  password</Text>}
+        {errors.password && <Text>You must enter your password</Text>}
       </View>
       <Controller
         control={control}
@@ -103,6 +110,7 @@ const RegisterScreen = ({ navigation }) => {
           Sign in
         </Button>
     </View>
-  )
-}
+  );
+};
+
 export default RegisterScreen;

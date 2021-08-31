@@ -1,15 +1,7 @@
 import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
-const styles = StyleSheet.create({
 
-  switchScreenText: {
-    paddingTop: 20,
-    paddingLeft: 10,
-  },
-  switchBtn: {
-    margin: 10,
-  },
-  
+const styles = StyleSheet.create({
   authFormContainer: {
     flex: 1,
     justifyContent: 'flex-start',
@@ -29,6 +21,14 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: 'red'
-  }
+  },
+  switchScreenText: {
+    paddingTop: 20,
+    paddingLeft: 10,
+  },
+  switchBtn: {
+    margin: 10,
+  },
 });
+
 export default styles;
